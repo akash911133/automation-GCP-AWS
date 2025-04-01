@@ -1,0 +1,23 @@
+name: With the push the infrasture configuration or even branch creation the workflow should push into s3. Install Java and Print Message
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow when pushing to the main branch
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  install_java:
+    runs-on: ubuntu-latest  # Using GitHub-hosted runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Java
+        run: |
+          sudo apt update
+          sudo apt install -y openjdk-11-jdk
+          java -version
+
+      - name: Print Message
+        run: echo "Java installation successful!"
