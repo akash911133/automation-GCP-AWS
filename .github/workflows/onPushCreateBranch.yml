@@ -1,9 +1,9 @@
 name: With the push the infrasture configuration or even branch creation the workflow should push into s3. Install Java and Print Message
 
 on:
-  push:
+  create: # Runs when a new branch or tag is created
     branches:
-      - main  # Trigger the workflow when pushing to the main branch
+      - '**'
 
 jobs:
   install_java:
